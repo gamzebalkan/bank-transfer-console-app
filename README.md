@@ -21,7 +21,7 @@ Although it is a console application, the architecture is intentionally designed
 
 ---
 ### 📸 Application Preview
-![Transfer Screen](docs/assets/transfer-success.png)
+![Transfer Screen](docs/assets/preview.png)
 ---
 
 ## 🏗 Architecture (Clean & Scalable Design)
