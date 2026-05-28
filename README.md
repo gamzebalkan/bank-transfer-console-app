@@ -87,10 +87,10 @@ You can use the following pre-seeded mock accounts to test the application's aut
 
 ## ▶ How to Run
 Clone the repository and run the application using the .NET CLI:
-git clone [https://github.com/gamzebalkan/bank-transfer-console-app.git](https://github.com/gamzebalkan/bank-transfer-console-app.git)
-cd bank-transfer-console-app
-dotnet restore
-dotnet run --project BankTransferConsoleApp
+- git clone [https://github.com/gamzebalkan/bank-transfer-console-app.git](https://github.com/gamzebalkan/bank-transfer-console-app.git)
+- cd bank-transfer-console-app
+- dotnet restore
+- dotnet run --project BankTransferConsoleApp
 
 ---
 
