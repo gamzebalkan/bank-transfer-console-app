@@ -10,7 +10,7 @@ Although it is a console application, the architecture is intentionally designed
 
 ## 🚀 Features
 
-- 🔐 Secure authentication using **BCrypt password hashing**
+- 🔐 Secure authentication using BCrypt password hashing
 - 💰 Account balance viewing
 - 💸 Domestic bank transfers between customers
 - ⚡ ACID-compliant transactional operations (PostgreSQL transactions)
@@ -19,9 +19,6 @@ Although it is a console application, the architecture is intentionally designed
 - ⌨ Console-based interactive UI
 - 🛡 Input validation + retry mechanisms for better UX
 
----
-### 📸 Application Preview
-![Transfer Screen](docs/assets/transfer-success.png)
 ---
 
 ## 🏗 Architecture (Clean & Scalable Design)
@@ -54,7 +51,9 @@ BankTransferConsoleApp/
 
 ---
 
-## 🧾 Database Schema (PostgreSQL)
+## 🧾 Database Structure
+
+The complete PostgreSQL schema, including customer profiles, tables, and constraints, can be found in the [database/init.sql](database/init.sql) file.
 
 ```sql
 CREATE TABLE public.customers (
@@ -64,9 +63,8 @@ CREATE TABLE public.customers (
     password_hash TEXT NOT NULL,
     currency TEXT DEFAULT 'USD'
 );
-
 ```
-
+---
 ## 💳 ACID-Compliant Transaction Logic
 
 - To guarantee data integrity during financial transfers, operations are bound to database-level transactions:
@@ -74,22 +72,31 @@ CREATE TABLE public.customers (
 - Atomicity: Debit and credit operations execute as a single atomic unit.
 - Rollback: Any unexpected failure triggers an automatic rollback, preventing partial state changes or data corruption under concurrent operations.
 
-
+---
 ## 🧪 Sample Users
-| Customer No | Name            | Balance  |
-| ----------- | --------------- | -------- |
-| 712201      | Sophia Garcia   | 18500.00 |
-| 712202      | John Miller     | 2450.75  |
-| 712203      | Ava Harris      | 16200.00 |
-| 712204      | Michael Johnson | 820.00   |
 
+You can use the following pre-seeded mock accounts to test the application's authentication and transfer features:
 
+| Customer No | Full Name       | Balance  | Password Hash                                                | Currency |
+| ----------- | --------------- | -------- | ------------------------------------------------------------ | -------- |
+| 712201      | Sophia Garcia   | 18500.00 | $2a$11$e09619s5vN5A... (BCrypt)                              | USD      |
+| 712202      | John Miller     | 2450.75  | $2a$11$mR3918vX9z2B... (BCrypt)                              | USD      |
+| 712203      | Ava Harris      | 16200.00 | $2a$11$pQ2011wL2w9P... (BCrypt)                              | USD      |
+| 712204      | Michael Johnson | 820.00   | $2a$11$kL8812zM3x1A... (BCrypt)                              | USD      |
+
+*Note: For actual database records and a visual breakdown, see the preview image below:*
+
+![Sample Customer Data](docs/assets/sample-customer-data.png)
+
+---
 ## 🛠 Tech Stack
 
 - C# (.NET Console Application)
 - PostgreSQL (Supabase)
 - Npgsql (PostgreSQL driver)
 - BCrypt.Net (Password hashing)
+
+---
 
 ## ▶ How to Run
 Clone the repository and run the application using the .NET CLI:
@@ -98,15 +105,9 @@ cd bank-transfer-console-app
 dotnet restore
 dotnet run --project BankTransferConsoleApp
 
-## 📖 Purpose
-
-This project was built as a backend engineering learning project to demonstrate:
-
-Real-world layered architecture design
-Secure authentication patterns
-Transaction-safe financial operations
-Clean code separation (Domain / Data / Service layers)
-Scalable system thinking (production-style structure)
+### 📸 Application Preview
+![Transfer Screen](docs/assets/preview.png)
+---
 
 
 ## 📄 License
