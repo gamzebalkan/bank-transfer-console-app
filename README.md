@@ -35,6 +35,8 @@ BankTransferConsoleApp/
 ├── Program.cs → Entry point
 ```
 
+---
+
 ### Key Principles Applied
 - Separation of Concerns (SoC): Easy to swap the Console UI with a Web API without touching the business logic.
 - Dependency Injection: Handled via a manual, lightweight form to keep dependencies explicit.
@@ -64,7 +66,9 @@ CREATE TABLE public.customers (
     currency TEXT DEFAULT 'USD'
 );
 ```
+
 ---
+
 ## 💳 ACID-Compliant Transaction Logic
 
 - To guarantee data integrity during financial transfers, operations are bound to database-level transactions:
@@ -73,6 +77,7 @@ CREATE TABLE public.customers (
 - Rollback: Any unexpected failure triggers an automatic rollback, preventing partial state changes or data corruption under concurrent operations.
 
 ---
+
 ## 🧪 Sample Users
 
 You can use the following pre-seeded mock accounts to test the application's authentication and transfer features:
@@ -80,6 +85,7 @@ You can use the following pre-seeded mock accounts to test the application's aut
 ![Sample Customer Data](docs/assets/sample-customer-data.png)
 
 ---
+
 ## 🛠 Tech Stack
 
 - C# (.NET Console Application)
@@ -96,12 +102,13 @@ cd bank-transfer-console-app
 dotnet restore
 dotnet run --project BankTransferConsoleApp
 
-### 📸 Application Preview
-![Transfer Screen](docs/assets/preview.png)
 ---
 
+### 📸 Application Preview
+![Transfer Screen](docs/assets/preview.png)
+
+---
 
 ## 📄 License
 
 This project is licensed under the MIT License. You are free to use, modify, and distribute this project for personal or commercial purposes with attribution.
-
