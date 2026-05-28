@@ -51,7 +51,10 @@ BankTransferConsoleApp/
 
 ---
 
-## 🧾 Database Schema (PostgreSQL)
+
+## 🧾 Database Structure
+
+The complete PostgreSQL schema, including customer profiles, tables, and constraints, can be found in the [database/init.sql](database/init.sql) file.
 
 ```sql
 CREATE TABLE public.customers (
@@ -62,7 +65,6 @@ CREATE TABLE public.customers (
     currency TEXT DEFAULT 'USD'
 );
 
-```
 
 ## 💳 ACID-Compliant Transaction Logic
 
@@ -73,12 +75,19 @@ CREATE TABLE public.customers (
 
 
 ## 🧪 Sample Users
-| Customer No | Name            | Balance  |
-| ----------- | --------------- | -------- |
-| 712201      | Sophia Garcia   | 18500.00 |
-| 712202      | John Miller     | 2450.75  |
-| 712203      | Ava Harris      | 16200.00 |
-| 712204      | Michael Johnson | 820.00   |
+
+You can use the following pre-seeded mock accounts to test the application's authentication and transfer features:
+
+| Customer No | Full Name       | Balance  | Password Hash                                                | Currency |
+| ----------- | --------------- | -------- | ------------------------------------------------------------ | -------- |
+| 712201      | Sophia Garcia   | 18500.00 | $2a$11$e09619s5vN5A... (BCrypt)                              | USD      |
+| 712202      | John Miller     | 2450.75  | $2a$11$mR3918vX9z2B... (BCrypt)                              | USD      |
+| 712203      | Ava Harris      | 16200.00 | $2a$11$pQ2011wL2w9P... (BCrypt)                              | USD      |
+| 712204      | Michael Johnson | 820.00   | $2a$11$kL8812zM3x1A... (BCrypt)                              | USD      |
+
+*Note: For actual database records and a visual breakdown, see the preview image below:*
+
+![Sample Customer Data](docs/assets/sample-customer-data.png)
 
 
 ## 🛠 Tech Stack
