@@ -20,6 +20,9 @@ Although it is a console application, the architecture is intentionally designed
 - 🛡 Input validation + retry mechanisms for better UX
 
 ---
+### 📸 Application Preview
+![Transfer Screen](docs/assets/transfer-success.png)
+---
 
 ## 🏗 Architecture (Clean & Scalable Design)
 
@@ -35,20 +38,18 @@ BankTransferConsoleApp/
 ├── Program.cs → Entry point
 ```
 
-### Design Principles Used
-- Separation of Concerns (SoC)
-- Dependency Injection (manual lightweight form)
-- Repository Pattern
-- Service Layer Pattern
-- Single Responsibility Principle (SRP)
+### Key Principles Applied
+- Separation of Concerns (SoC): Easy to swap the Console UI with a Web API without touching the business logic.
+- Dependency Injection: Handled via a manual, lightweight form to keep dependencies explicit.
+- Repository & Service Layer Pattern: Isolates data persistence from core banking rules.
+- Single Responsibility Principle (SRP): Each class has only one reason to change.
 
 ---
 
-## 🔐 Security
+## 🔐 Security & Data Integrity
 
-- Passwords are stored using **BCrypt hashing (non-reversible)**
-- No plaintext password storage
-- SQL Injection protection via parameterized queries
+- Password Safety: Zero plaintext storage. All passwords utilize BCrypt hashing.
+- SQL Injection Protection: Fully parameterized queries via Npgsql.
 - Authentication logic separated from data access layer
 
 ---
@@ -66,14 +67,13 @@ CREATE TABLE public.customers (
 
 ```
 
-## 💳 Transaction Logic
+## 💳 ACID-Compliant Transaction Logic
 
-All transfers are handled using database-level transactions (ACID compliance):
+- To guarantee data integrity during financial transfers, operations are bound to database-level transactions:
+- Validation: Sender's balance is verified before any debit occurs.
+- Atomicity: Debit and credit operations execute as a single atomic unit.
+- Rollback: Any unexpected failure triggers an automatic rollback, preventing partial state changes or data corruption under concurrent operations.
 
-Sender balance is validated before debit
-Atomic debit + credit operations
-Automatic rollback on failure
-Ensures data integrity under concurrent operations
 
 ## 🧪 Sample Users
 | Customer No | Name            | Balance  |
@@ -92,12 +92,11 @@ Ensures data integrity under concurrent operations
 - BCrypt.Net (Password hashing)
 
 ## ▶ How to Run
-
-- git clone https://github.com/gamzebalkan/bank-transfer-console-app.git
-- cd bank-transfer-console-app
-- dotnet restore
-- dotnet run --project BankTransferConsoleApp
-
+Clone the repository and run the application using the .NET CLI:
+git clone [https://github.com/gamzebalkan/bank-transfer-console-app.git](https://github.com/gamzebalkan/bank-transfer-console-app.git)
+cd bank-transfer-console-app
+dotnet restore
+dotnet run --project BankTransferConsoleApp
 
 ## 📖 Purpose
 
@@ -114,6 +113,3 @@ Scalable system thinking (production-style structure)
 
 This project is licensed under the MIT License. You are free to use, modify, and distribute this project for personal or commercial purposes with attribution.
 
-## 👤 Author
-
-Backend-focused engineering project built to simulate real-world banking system architecture and secure transaction processing.
