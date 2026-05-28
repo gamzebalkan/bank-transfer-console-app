@@ -10,7 +10,7 @@ Although it is a console application, the architecture is intentionally designed
 
 ## 🚀 Features
 
-- 🔐 Secure authentication using **BCrypt password hashing**
+- 🔐 Secure authentication using BCrypt password hashing
 - 💰 Account balance viewing
 - 💸 Domestic bank transfers between customers
 - ⚡ ACID-compliant transactional operations (PostgreSQL transactions)
@@ -51,7 +51,6 @@ BankTransferConsoleApp/
 
 ---
 
-
 ## 🧾 Database Structure
 
 The complete PostgreSQL schema, including customer profiles, tables, and constraints, can be found in the [database/init.sql](database/init.sql) file.
@@ -65,7 +64,7 @@ CREATE TABLE public.customers (
     currency TEXT DEFAULT 'USD'
 );
 
-
+---
 ## 💳 ACID-Compliant Transaction Logic
 
 - To guarantee data integrity during financial transfers, operations are bound to database-level transactions:
@@ -73,7 +72,7 @@ CREATE TABLE public.customers (
 - Atomicity: Debit and credit operations execute as a single atomic unit.
 - Rollback: Any unexpected failure triggers an automatic rollback, preventing partial state changes or data corruption under concurrent operations.
 
-
+---
 ## 🧪 Sample Users
 
 You can use the following pre-seeded mock accounts to test the application's authentication and transfer features:
@@ -89,13 +88,15 @@ You can use the following pre-seeded mock accounts to test the application's aut
 
 ![Sample Customer Data](docs/assets/sample-customer-data.png)
 
-
+---
 ## 🛠 Tech Stack
 
 - C# (.NET Console Application)
 - PostgreSQL (Supabase)
 - Npgsql (PostgreSQL driver)
 - BCrypt.Net (Password hashing)
+
+---
 
 ## ▶ How to Run
 Clone the repository and run the application using the .NET CLI:
