@@ -35,6 +35,8 @@ BankTransferConsoleApp/
 ├── Program.cs → Entry point
 ```
 
+---
+
 ### Key Principles Applied
 - Separation of Concerns (SoC): Easy to swap the Console UI with a Web API without touching the business logic.
 - Dependency Injection: Handled via a manual, lightweight form to keep dependencies explicit.
@@ -64,7 +66,9 @@ CREATE TABLE public.customers (
     currency TEXT DEFAULT 'USD'
 );
 ```
+
 ---
+
 ## 💳 ACID-Compliant Transaction Logic
 
 - To guarantee data integrity during financial transfers, operations are bound to database-level transactions:
@@ -73,22 +77,15 @@ CREATE TABLE public.customers (
 - Rollback: Any unexpected failure triggers an automatic rollback, preventing partial state changes or data corruption under concurrent operations.
 
 ---
+
 ## 🧪 Sample Users
 
 You can use the following pre-seeded mock accounts to test the application's authentication and transfer features:
 
-| Customer No | Full Name       | Balance  | Password Hash                                                | Currency |
-| ----------- | --------------- | -------- | ------------------------------------------------------------ | -------- |
-| 712201      | Sophia Garcia   | 18500.00 | $2a$11$e09619s5vN5A... (BCrypt)                              | USD      |
-| 712202      | John Miller     | 2450.75  | $2a$11$mR3918vX9z2B... (BCrypt)                              | USD      |
-| 712203      | Ava Harris      | 16200.00 | $2a$11$pQ2011wL2w9P... (BCrypt)                              | USD      |
-| 712204      | Michael Johnson | 820.00   | $2a$11$kL8812zM3x1A... (BCrypt)                              | USD      |
-
-*Note: For actual database records and a visual breakdown, see the preview image below:*
-
 ![Sample Customer Data](docs/assets/sample-customer-data.png)
 
 ---
+
 ## 🛠 Tech Stack
 
 - C# (.NET Console Application)
@@ -105,12 +102,13 @@ cd bank-transfer-console-app
 dotnet restore
 dotnet run --project BankTransferConsoleApp
 
-### 📸 Application Preview
-![Transfer Screen](docs/assets/preview.png)
 ---
 
+### 📸 Application Preview
+![Transfer Screen](docs/assets/preview.png)
+
+---
 
 ## 📄 License
 
 This project is licensed under the MIT License. You are free to use, modify, and distribute this project for personal or commercial purposes with attribution.
-
