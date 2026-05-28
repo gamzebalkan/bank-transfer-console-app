@@ -13,13 +13,13 @@ namespace BankTransferConsoleApp
 
         public App()
         {
-            const string connectionString =
-                "Host=aws-1-ap-northeast-1.pooler.supabase.com;Port=5432;Database=postgres;Username=postgres.ucihvmmkfzptmycdaprf;Password=bXZveW3aIKp6C11T;SSL Mode=Require;Trust Server Certificate=true; Timeout=30; Command Timeout=30";
-
-            _repo = new CustomerRepository(connectionString);
+        {
+            // Repository reads DB connection string from environment variable
+            _repo = new CustomerRepository();
 
             _authService = new AuthService(_repo);
             _transferService = new TransferService(_repo);
+        }
         }
 
         public void Run()

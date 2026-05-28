@@ -5,13 +5,14 @@ using BankTransferConsoleApp.Models;
 namespace BankTransferConsoleApp.Data
 {
     public class CustomerRepository
-    {
-        private readonly string _connectionString;
+    {private readonly string _connectionString;
 
-        public CustomerRepository(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
+    public CustomerRepository()
+    {
+        _connectionString =
+            Environment.GetEnvironmentVariable("DB_CONNECTION_STRING")
+            ?? throw new Exception("DB_CONNECTION_STRING is not set.");
+    }
 
         private NpgsqlConnection CreateConnection()
         {
