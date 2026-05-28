@@ -17,7 +17,7 @@
             "console": "internalConsole",
             "stopAtEntry": false,
             "env": {
-             "DB_CONNECTION_STRING":  "Host=aws-1-ap-northeast-1.pooler.supabase.com;Port=5432;Database=postgres;Username=postgres.ucihvmmkfzptmycdaprf;Password=bXZveW3aIKp6C11T;SSL Mode=Require;Trust Server Certificate=true;Timeout=30;Command Timeout=30"}
+             "DB_CONNECTION_STRING":  "Host=aws-1-ap-northeast-1.pooler.supabase.com;Port=5432;Database=postgres;Username=postgres.ucihvmmkfzptmycdaprf;Password=<YOUR_DB_PASSWORD>;SSL Mode=Require;Trust Server Certificate=true;Timeout=30;Command Timeout=30"}
         },
         {
             "name": ".NET Core Attach",
