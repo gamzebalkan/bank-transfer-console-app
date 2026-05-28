@@ -13,49 +13,50 @@ namespace BankTransferConsoleApp.Services
             _repo = repo;
         }
 
-        public Customer? Login()
+       public Customer? Login()
+{
+    int attempts = 0;
+    const int maxAttempts = 3;
+
+    while (attempts < maxAttempts)
+    {
+        Console.WriteLine("\nWelcome. Please enter your customer number and password.\n");
+
+        Console.Write("Customer No: ");
+        string customerNo = (Console.ReadLine() ?? "").Trim();
+
+        Console.Write("Password: ");
+        string password = ReadPasswordMasked();
+
+        // -----------------------------
+        // PIN FORMAT VALIDATION
+        // -----------------------------
+        if (password.Length != 4 || !int.TryParse(password, out _))
         {
-            Console.WriteLine("Welcome. Please enter your customer number and password.\n");
+            Console.WriteLine("\nInvalid PIN format. Please enter a 4-digit numeric PIN.");
 
-            Console.Write("Customer No: ");
-            string customerNo = (Console.ReadLine() ?? "").Trim();
+            attempts++;
+            Console.WriteLine($"Attempts left: {maxAttempts - attempts}\n");
 
-            Console.Write("Password: ");
-            string password = ReadPasswordMasked();
+            continue;
+        }
 
-            // PIN format validation
-            if (password.Length != 4 || !int.TryParse(password, out _))
-            {
-                Console.WriteLine("\nInvalid PIN format. Please enter a 4-digit numeric PIN.");
+        // Fetch customer from database
+        var customer = _repo.GetCustomerByCustomerNo(customerNo);
 
-                Console.Write("Try again - Password: ");
-                password = ReadPasswordMasked();
+        if (customer == null)
+        {
+            attempts++;
+            Console.WriteLine("\nInvalid customer number or password.");
+            Console.WriteLine($"Attempts left: {maxAttempts - attempts}\n");
+            continue;
+        }
 
-                if (password.Length != 4 || !int.TryParse(password, out _))
-                {
-                    Console.WriteLine("\nInvalid PIN format again. Exiting...");
-                    return null;
-                }
-            }
+        // Verify password 
+        bool isValid = BCrypt.Net.BCrypt.Verify(password, customer.PasswordHash);
 
-            // Fetch customer from repository
-            var customer = _repo.GetCustomerByCustomerNo(customerNo);
-
-            if (customer == null)
-            {
-                Console.WriteLine("\nInvalid customer number or password.");
-                return null;
-            }
-
-            // Verify password
-            bool isValid = BCrypt.Net.BCrypt.Verify(password, customer.PasswordHash);
-
-            if (!isValid)
-            {
-                Console.WriteLine("\nInvalid customer number or password.");
-                return null;
-            }
-
+        if (isValid)
+        {
             return new Customer
             {
                 CustomerNo = customer.CustomerNo,
@@ -63,6 +64,15 @@ namespace BankTransferConsoleApp.Services
                 Balance = customer.Balance
             };
         }
+
+        attempts++;
+        Console.WriteLine("\nInvalid customer number or password.");
+        Console.WriteLine($"Attempts left: {maxAttempts - attempts}\n");
+    }
+
+    Console.WriteLine("\nToo many failed login attempts. Exiting for security reasons...");
+    return null;
+}
 
         // Masked password input
         private string ReadPasswordMasked()

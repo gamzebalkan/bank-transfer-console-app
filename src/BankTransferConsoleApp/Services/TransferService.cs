@@ -63,7 +63,7 @@ namespace BankTransferConsoleApp.Services
 
             if (!success)
             {
-                Console.WriteLine("Transfer failed (insufficient balance or error).");
+                Console.WriteLine("Transfer failed: insufficient balance.");
                 return;
             }
             
@@ -72,7 +72,7 @@ namespace BankTransferConsoleApp.Services
             var senderBalance = _repo.GetBalance(sender.CustomerNo);
 
             Console.WriteLine($"\nTransfer successful. {amount:F2} USD has been sent to recipient account {receiver}.");
-            Console.WriteLine($"Your new balance: {senderBalance:F2} USD");
+            Console.WriteLine($"Your new balance: {senderBalance:F2} USD\n");
         }
     }
 }

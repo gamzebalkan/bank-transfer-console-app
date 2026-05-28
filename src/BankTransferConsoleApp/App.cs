@@ -40,6 +40,7 @@ namespace BankTransferConsoleApp
 
             while (true)
             {
+                Console.WriteLine("\n------ Main Menu ------");
                 Console.WriteLine("1. View Balance");
                 Console.WriteLine("2. Bank Transfer (Domestic)");
                 Console.WriteLine("3. International Transfer (SWIFT)");
