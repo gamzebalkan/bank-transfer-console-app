@@ -2,44 +2,53 @@
 
 A secure, console-based banking system built with **C# (.NET)** and **PostgreSQL (Supabase)**.
 
-This project simulates real-world banking operations such as authentication, secure password handling, and transactional money transfers using a layered architecture.
+This project is a lightweight fintech simulation designed as a **clean architecture demo** to demonstrate real-world backend engineering principles such as authentication, transactional consistency, and layered system design.
+
+Although it is a console application, the architecture is intentionally designed to be **scalable, maintainable, and production-oriented**.
 
 ---
 
 ## 🚀 Features
 
-- 🔐 Secure login system using **BCrypt password hashing**
-- 💰 View account balance
+- 🔐 Secure authentication using **BCrypt password hashing**
+- 💰 Account balance viewing
 - 💸 Domestic bank transfers between customers
-- ⚡ Transaction-safe operations using PostgreSQL transactions (ACID compliant)
-- 🧱 Clean layered architecture (Models / Services / Data)
-- ⌨ Console-based user interface
-- 🛡 Input validation and retry mechanisms
+- ⚡ ACID-compliant transactional operations (PostgreSQL transactions)
+- 🧱 Clean layered architecture (Separation of Concerns)
+- 🧩 Repository + Service pattern implementation
+- ⌨ Console-based interactive UI
+- 🛡 Input validation + retry mechanisms for better UX
 
 ---
 
-## 🏗 Architecture
+## 🏗 Architecture (Clean & Scalable Design)
 
-The project follows a simple layered architecture:
+This project follows a layered architecture pattern inspired by enterprise backend systems:
 
 BankTransferConsoleApp/
 │
-├── Models/ → Data models (Customer)
-├── Data/ → Database access (Repository layer)
-├── Services/ → Business logic (Auth, Transfer)
-├── App.cs → Application flow
+├── Models/ → Domain entities (Customer)
+├── Data/ → Repository layer (Database access abstraction)
+├── Services/ → Business logic layer (Auth, Transfer)
+├── App.cs → Application orchestration layer
 ├── Program.cs → Entry point
 
 
+### Design Principles Used
+- Separation of Concerns (SoC)
+- Dependency Injection (manual lightweight form)
+- Repository Pattern
+- Service Layer Pattern
+- Single Responsibility Principle (SRP)
 
 ---
 
 ## 🔐 Security
 
-- Passwords are stored using **BCrypt hashing**
-- No plain-text passwords are used in authentication
-- SQL queries use **parameterized commands** to prevent SQL injection
-- Authentication is handled in the service layer
+- Passwords are stored using **BCrypt hashing (non-reversible)**
+- No plaintext password storage
+- SQL Injection protection via parameterized queries
+- Authentication logic separated from data access layer
 
 ---
 
@@ -54,21 +63,16 @@ CREATE TABLE public.customers (
     currency TEXT DEFAULT 'USD'
 );
 
+## 💳 Transaction Logic
 
-💳 Transaction Logic
+All transfers are handled using database-level transactions (ACID compliance):
 
-Transfers are handled using PostgreSQL transactions:
+Sender balance is validated before debit
+Atomic debit + credit operations
+Automatic rollback on failure
+Ensures data integrity under concurrent operations
 
-Sender balance is checked before debit
-Amount is deducted only if sufficient funds exist
-Recipient account is credited
-Transaction is rolled back on failure
-
-This ensures data consistency and reliability (ACID compliance).
-
-
-🧪 Sample Users
-
+## 🧪 Sample Users
 | Customer No | Name            | Balance  |
 | ----------- | --------------- | -------- |
 | 712201      | Sophia Garcia   | 18500.00 |
@@ -77,43 +81,35 @@ This ensures data consistency and reliability (ACID compliance).
 | 712204      | Michael Johnson | 820.00   |
 
 
-🛠 Tech Stack
+## 🛠 Tech Stack
 C# (.NET Console Application)
 PostgreSQL (Supabase)
 Npgsql (PostgreSQL driver)
 BCrypt.Net (Password hashing)
 
-▶ How to Run
-Clone the repository
-git clone https://github.com/yourusername/bank-transfer-console-app.git
-Open project in Visual Studio or VS Code
-Restore dependencies
+## ▶ How to Run
+
+git clone https://github.com/gamzebalkan/bank-transfer-console-app.git
+cd bank-transfer-console-app
 dotnet restore
-Run application
 dotnet run --project BankTransferConsoleApp
 
-📌 Future Improvements
-Multi-currency support (USD / EUR / TRY)
-Transaction history logging
-Login attempt lockout system
-Admin dashboard
-REST API version (ASP.NET Core)
-Docker support
+
+## 📖 Purpose
+
+This project was built as a backend engineering learning project to demonstrate:
+
+Real-world layered architecture design
+Secure authentication patterns
+Transaction-safe financial operations
+Clean code separation (Domain / Data / Service layers)
+Scalable system thinking (production-style structure)
 
 
-📖 Purpose
+## 📄 License
 
-This project was built as a backend learning exercise to demonstrate:
+This project is licensed under the MIT License. You are free to use, modify, and distribute this project for personal or commercial purposes with attribution.
 
-Layered architecture design in .NET
-Secure authentication practices
-Database transaction handling
-Real-world banking logic simulation
+## 👤 Author
 
-
-👤 Author
-
-Backend-focused learning project built with emphasis on clean architecture and real-world system design.
-
----
-
+Backend-focused engineering project built to simulate real-world banking system architecture and secure transaction processing.
