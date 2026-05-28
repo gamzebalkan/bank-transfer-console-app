@@ -93,10 +93,10 @@ Ensures data integrity under concurrent operations
 
 ## ▶ How to Run
 
-git clone https://github.com/gamzebalkan/bank-transfer-console-app.git
-cd bank-transfer-console-app
-dotnet restore
-dotnet run --project BankTransferConsoleApp
+- git clone https://github.com/gamzebalkan/bank-transfer-console-app.git
+- cd bank-transfer-console-app
+- dotnet restore
+- dotnet run --project BankTransferConsoleApp
 
 
 ## 📖 Purpose
