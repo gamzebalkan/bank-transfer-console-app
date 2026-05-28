@@ -63,7 +63,7 @@ CREATE TABLE public.customers (
     password_hash TEXT NOT NULL,
     currency TEXT DEFAULT 'USD'
 );
-
+```
 ---
 ## 💳 ACID-Compliant Transaction Logic
 
