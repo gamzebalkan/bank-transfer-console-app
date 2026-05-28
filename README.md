@@ -20,9 +20,6 @@ Although it is a console application, the architecture is intentionally designed
 - 🛡 Input validation + retry mechanisms for better UX
 
 ---
-### 📸 Application Preview
-![Transfer Screen](docs/assets/preview.png)
----
 
 ## 🏗 Architecture (Clean & Scalable Design)
 
@@ -98,15 +95,9 @@ cd bank-transfer-console-app
 dotnet restore
 dotnet run --project BankTransferConsoleApp
 
-## 📖 Purpose
-
-This project was built as a backend engineering learning project to demonstrate:
-
-Real-world layered architecture design
-Secure authentication patterns
-Transaction-safe financial operations
-Clean code separation (Domain / Data / Service layers)
-Scalable system thinking (production-style structure)
+### 📸 Application Preview
+![Transfer Screen](docs/assets/preview.png)
+---
 
 
 ## 📄 License
