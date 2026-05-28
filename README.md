@@ -85,10 +85,11 @@ Ensures data integrity under concurrent operations
 
 
 ## 🛠 Tech Stack
-C# (.NET Console Application)
-PostgreSQL (Supabase)
-Npgsql (PostgreSQL driver)
-BCrypt.Net (Password hashing)
+
+- C# (.NET Console Application)
+- PostgreSQL (Supabase)
+- Npgsql (PostgreSQL driver)
+- BCrypt.Net (Password hashing)
 
 ## ▶ How to Run
 
