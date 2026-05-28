@@ -55,17 +55,7 @@ BankTransferConsoleApp/
 
 ## 🧾 Database Structure
 
-The complete PostgreSQL schema, including customer profiles, tables, and constraints, can be found in the [database/init.sql](database/init.sql) file.
-
-```sql
-CREATE TABLE public.customers (
-    customer_no TEXT PRIMARY KEY,
-    full_name TEXT NOT NULL,
-    balance NUMERIC NOT NULL,
-    password_hash TEXT NOT NULL,
-    currency TEXT DEFAULT 'USD'
-);
-```
+The complete PostgreSQL initialization scripts can be found in the [database/init.sql](database/init.sql) file. This setup automatically configures the database environment, pre-seeds the mock customer accounts, and securely migrates raw test passwords into heavily encrypted BCrypt hashes using the database-level `pgcrypto` extension before completely dropping the plaintext columns for maximum security.
 
 ---
 
