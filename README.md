@@ -25,6 +25,7 @@ Although it is a console application, the architecture is intentionally designed
 
 This project follows a layered architecture pattern inspired by enterprise backend systems:
 
+```text
 BankTransferConsoleApp/
 │
 ├── Models/ → Domain entities (Customer)
@@ -32,7 +33,7 @@ BankTransferConsoleApp/
 ├── Services/ → Business logic layer (Auth, Transfer)
 ├── App.cs → Application orchestration layer
 ├── Program.cs → Entry point
-
+```
 
 ### Design Principles Used
 - Separation of Concerns (SoC)
@@ -62,6 +63,8 @@ CREATE TABLE public.customers (
     password_hash TEXT NOT NULL,
     currency TEXT DEFAULT 'USD'
 );
+
+```
 
 ## 💳 Transaction Logic
 
