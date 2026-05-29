@@ -1,10 +1,11 @@
 # Bank Transfer Console App
 
-A secure, console-based banking system built with **C# (.NET)** and **PostgreSQL (Supabase)**.
+A secure banking system built with **C# (.NET)** and **PostgreSQL (Supabase)**.
 
 This project is a lightweight fintech simulation designed as a **clean architecture demo** to demonstrate real-world backend engineering principles such as authentication, transactional consistency, and layered system design.
 
-Although it is a console application, the architecture is intentionally designed to be **scalable, maintainable, and production-oriented**.
+Although it is a learning-focuded console application, the architecture is intentionally engineered to be **scalable, maintainable, and production-oriented**.
+
 
 ---
 
